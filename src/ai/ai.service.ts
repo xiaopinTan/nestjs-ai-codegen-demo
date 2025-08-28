@@ -138,6 +138,7 @@ export class AiService {
   }
 
   private async loadSystemPrompt(fileName: string): Promise<string> {
+    console.log(1111)
     return readFile(`./src/prompts/${fileName}`, 'utf-8');
   }
 }
