@@ -1,5 +1,5 @@
 import { Controller, Query, Sse } from '@nestjs/common';
-import { AiCodeGeneratorFacade } from '../ai-code-generator.facade';
+import { AiCodeGeneratorFacade } from './ai-code-generator.facade';
 import { CodeGenTypeEnum } from '../common/enums/code-gen-type.enum';
 import { map, finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';

@@ -1,6 +1,6 @@
 
-import { HtmlCodeResult } from '../enums/html-code-result.entity';
-import { MultiFileCodeResult } from '../enums/multi-file-code-result.entity';
+import { HtmlCodeResult } from '../enums/html-code-result.enum';
+import { MultiFileCodeResult } from '../enums/multi-file-code-result.enum';
 
 export class CodeParser {
   // 静态正则

@@ -1,10 +1,9 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { AiService } from './ai/ai.service';
-import { CodeGenTypeEnum } from './common/enums/code-gen-type.enum';
-import { CodeFileSaver } from './core/code-file-saver';
-import { HtmlCodeResult } from './common/enums/html-code-result.entity';
-import { CodeParser } from "./common/utils/CodeParser"
+import { AiService } from './ai.service';
+import { CodeGenTypeEnum } from '../common/enums/code-gen-type.enum';
+import { CodeFileSaver } from '../core/code-file-saver';
+import { CodeParser } from "../common/utils/CodeParser"
 @Injectable()
 export class AiCodeGeneratorFacade {
   constructor(private readonly aiService: AiService) {}
@@ -18,7 +17,6 @@ export class AiCodeGeneratorFacade {
     if (!type) {
       throw new InternalServerErrorException('生成类型为空');
     }
-
     switch (type) {
       case CodeGenTypeEnum.HTML:
         return this.processCodeStream(
@@ -52,12 +50,12 @@ export class AiCodeGeneratorFacade {
         // ===== AI生成结束，做一些操作 =====
         let htmlResult;
         if(type === CodeGenTypeEnum.HTML){
+          // ======== 保存到文件夹    ======================
              htmlResult = CodeParser.parseHtmlCode(buffer);
-             // ======== 保存到文件夹    ======================
              CodeFileSaver.saveHtmlCodeResult(htmlResult);
         }else if(type === CodeGenTypeEnum.MULTI_FILE){
+          // ======== 保存到文件夹    ======================
             htmlResult = CodeParser.parseMultiFileCode(buffer);
-            // ======== 保存到文件夹    ======================
             CodeFileSaver.saveMultiFileCodeResult(htmlResult);
         }
         subscriber.complete();

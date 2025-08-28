@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { HtmlCodeResult } from '../common/enums/html-code-result.entity';
-import { MultiFileCodeResult } from '../common/enums/multi-file-code-result.entity';
+import { HtmlCodeResult } from '../common/enums/html-code-result.enum';
+import { MultiFileCodeResult } from '../common/enums/multi-file-code-result.enum';
 import { v4 as uuidv4 } from 'uuid';
 
 export class CodeFileSaver {
